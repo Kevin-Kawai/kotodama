@@ -10,9 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_07_02_130927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "resources", force: :cascade do |t|
+    t.bigint "subject_id"
+    t.string "url"
+    t.string "language"
+    t.index ["subject_id"], name: "index_resources_on_subject_id"
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.bigint "resource_id"
+    t.string "url"
+    t.string "title"
+    t.index ["resource_id"], name: "index_sections_on_resource_id"
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "name"
+  end
 
 end
