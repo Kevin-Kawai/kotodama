@@ -1,0 +1,40 @@
+.search-result-area {
+  margin-top: 30px;
+}
+
+.search-term {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.search-result-item__container {
+  width: 40%;
+  margin: 15px auto;
+}
+
+.search-result-item__content {
+  display: flex;
+}
+
+.search-result-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba(125, 116, 116, 0.8);
+  padding: 15px;
+}
+
+.search-result-item__snapshot {
+  height: 100px;
+  width: 180px;
+  background-color: #C4C4C4;
+  margin-right: 10px;
+}
+
+.search-result-item__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
