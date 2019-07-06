@@ -14,6 +14,8 @@ subject = Subject.create(name: "React")
 
 resource = subject.resources.create(url: "www.test.com", language: "EN")
 subject.resources.create(url: "www.test.com/ja", language: "JP")
+subject.resources.create(url: "www.test.com/ch", language: "CH")
+subject.resources.create(url: "www.test.com/rs", language: "RS")
 
 resource.sections.create(url: "www.test.com/section/1", title: "Intro")
 resource.sections.create(url: "www.test.com/section/2", title: "Next")

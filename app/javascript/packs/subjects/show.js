@@ -1,0 +1,1 @@
+impot "show.scss"

@@ -5,5 +5,7 @@ class SubjectsController < ApplicationController
 
   def show
     @subject = Subject.find_by(id: params[:id])
+    @sections = @subject.resources.first.sections
+    @available_languages = @subject.available_languages
   end
 end
