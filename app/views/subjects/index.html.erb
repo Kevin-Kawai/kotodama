@@ -1,5 +1,6 @@
 <% if @subjects.empty? %>
   <%= render "no_results" %>
+  <%= link_to "Create Subject", new_subject_path(search_term: params[:search_term]) %>
 <% else %>
   <div class="container search-result-area">
     <% @subjects.each do |subject| %>

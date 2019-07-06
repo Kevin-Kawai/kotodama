@@ -1,11 +1,13 @@
 <div class="">
   <h5 class="section-title">Sections</h5>
   <div class="section-container">
-    <% sections.each do |section| %>
-      <div class="section-item">
-        <i class="material-icons section-icon__transformation">arrow_drop_down_circle</i>
-        <div><%= section.title %></div>
-      </div>
+    <% if sections.present? %>
+      <% sections.each do |section| %>
+        <div class="section-item">
+          <i class="material-icons section-icon__transformation">arrow_drop_down_circle</i>
+          <div><%= section.title %></div>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <div class="section-add-button">Add Section</div>
