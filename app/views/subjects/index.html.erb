@@ -1,12 +1,13 @@
-<% if @subjects.empty? %>
-  <%= render "no_results" %>
-  <%= link_to "Create Subject", new_subject_path(search_term: params[:search_term]) %>
-<% else %>
-  <div class="container search-result-area">
-    <% @subjects.each do |subject| %>
-      <div>Search Result for <p class="search-term"><%= params[:search_term] %></p></div>
-      <%= render "search_results", subject: subject %>
-    <% end %>
-  </div>
-<% end %>
-<%= javascript_pack_tag 'subjects/index' %>
+<main class="search-result__main-content">
+  <% if @subjects.empty? %>
+    <%= render "no_results" %>
+  <% else %>
+    <div class="container search-result-area">
+      <% @subjects.each do |subject| %>
+        <div>Search Result for <p class="search-term"><%= params[:search_term] %></p></div>
+        <%= render "search_results", subject: subject %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= javascript_pack_tag 'subjects/index' %>
+</main>

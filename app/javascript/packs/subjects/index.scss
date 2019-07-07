@@ -38,3 +38,17 @@
   flex-direction: column;
   justify-content: flex-end;
 }
+
+.search-result-item__create-button {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #C4C4C4;
+  border-radius: 4px;
+  width: 15%;
+  padding: 4px 2px;
+  margin: 15px 0;
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
