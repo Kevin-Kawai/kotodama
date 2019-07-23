@@ -1,6 +1,6 @@
 <div class="">
   <h5 class="section-title">Sections</h5>
-  <div class="section-container">
+  <div class="section-container" id="section-container">
     <% if sections.present? %>
       <% sections.each do |section| %>
         <div class="section-item">
@@ -10,5 +10,5 @@
       <% end %>
     <% end %>
   </div>
-  <div class="section-add-button">Add Section</div>
+  <button class="section-add-button" id="section-add-button">Add Section</button>
 </div>
