@@ -3,6 +3,8 @@ import axios from "axios";
 
 const addButton = document.getElementById("section-add-button");
 const deleteButtons = document.getElementsByClassName("section-delete-button");
+const sectionInputField = document.getElementById("section-field-inputs");
+let sectionInputFieldDisplayed = false;
 
 const createSectionHeader = (sectionTitle, csrfToken) => {
   let newSectionElement = document.createElement('div')
@@ -31,22 +33,29 @@ const deleteSection = (csrfToken) => {
 
 const createSection = (csrfToken) => {
   return (e) => {
-    e.preventDefault();
-    axios.post("/sections", {
-      sections: {
-        resource_id: 1,
-        url: "test",
-        title: 'wahoooo'
-      }
-    },{
-      headers: {
-        'X-CSRF-TOKEN': csrfToken
-      }
-    }).then((response) => {
-      createSectionHeader(response.data["section_title"], csrfToken)
-    }).catch((error) => {
-      console.log(error);
-    })
+    if(sectionInputFieldDisplayed === false) {
+      sectionInputField.classList.remove("hidden-inputs");
+      sectionInputFieldDisplayed = true;
+    } else {
+      e.preventDefault();
+      axios.post("/sections", {
+        sections: {
+          resource_id: 1,
+          url: sectionInputField.children.url.value,
+          title: sectionInputField.children.title.value,
+        }
+      },{
+        headers: {
+          'X-CSRF-TOKEN': csrfToken
+        }
+      }).then((response) => {
+        createSectionHeader(response.data["section_title"], csrfToken)
+      }).catch((error) => {
+        console.log(error);
+      })
+      sectionInputField.classList.add("hidden-inputs");
+      sectionInputFieldDisplayed = false;
+    }
   }
 }
 
