@@ -6,6 +6,7 @@
         <div class="section-item">
           <i class="material-icons section-icon__transformation">arrow_drop_down_circle</i>
           <div><%= section.title %></div>
+          <i class="material-icons section-icon__transformation section-delete-button" data-delete-url="<%= section_path(section) %>">clear</i>
         </div>
       <% end %>
     <% end %>

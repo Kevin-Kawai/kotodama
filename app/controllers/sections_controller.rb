@@ -9,7 +9,10 @@ class SectionsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    section = Section.find(params[:id])
+    section.destroy!
+  end
 
   private
 
