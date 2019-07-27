@@ -4,7 +4,8 @@ class SectionsController < ApplicationController
     if section.save!
       render json: {
         status: "Success",
-        section_title: params[:sections][:title]
+        section_title: section.title,
+        section_id: section.id,
       }
     end
   end

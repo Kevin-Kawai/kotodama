@@ -1,18 +1,18 @@
 import "./styles/show.scss"
 import axios from "axios";
+import inputField from "./inputField";
 
 const addButton = document.getElementById("section-add-button");
 const deleteButtons = document.getElementsByClassName("section-delete-button");
-const sectionInputField = document.getElementById("section-field-inputs");
-let sectionInputFieldDisplayed = false;
+const sectionInputField = new inputField("section-field-inputs");
 
-const createSectionHeader = (sectionTitle, csrfToken) => {
+const createSectionHeader = (sectionTitle, sectionId, csrfToken) => {
   let newSectionElement = document.createElement('div')
   newSectionElement.innerHTML = `
     <div class="section-item">
       <i class="material-icons section-icon__transformation">arrow_drop_down_circle</i>
       <div>${sectionTitle}</div>
-      <i class="material-icons section-icon__transformation section-delete-button" data-delete-url="<%= section_path(section) %>">clear</i>
+      <i class="material-icons section-icon__transformation section-delete-button" data-delete-url="/sections/${sectionId}">clear</i>
     </div>`
   newSectionElement.addEventListener("click", deleteSection(csrfToken));
   document.getElementById('section-container').appendChild(newSectionElement);
@@ -33,28 +33,27 @@ const deleteSection = (csrfToken) => {
 
 const createSection = (csrfToken) => {
   return (e) => {
-    if(sectionInputFieldDisplayed === false) {
-      sectionInputField.classList.remove("hidden-inputs");
-      sectionInputFieldDisplayed = true;
+    if(sectionInputField.inputFieldDisplayStatus() === false) {
+      sectionInputField.displayInput();
     } else {
       e.preventDefault();
       axios.post("/sections", {
         sections: {
           resource_id: 1,
-          url: sectionInputField.children.url.value,
-          title: sectionInputField.children.title.value,
+          url: sectionInputField.inputUrl(),
+          title: sectionInputField.inputTitle(),
         }
       },{
         headers: {
           'X-CSRF-TOKEN': csrfToken
         }
       }).then((response) => {
-        createSectionHeader(response.data["section_title"], csrfToken)
+        console.log(response.data);
+        createSectionHeader(response.data["section_title"], response.data["section_id"], csrfToken)
       }).catch((error) => {
         console.log(error);
       })
-      sectionInputField.classList.add("hidden-inputs");
-      sectionInputFieldDisplayed = false;
+      sectionInputField.hideInput();
     }
   }
 }
