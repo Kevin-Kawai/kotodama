@@ -21,6 +21,7 @@ const deleteSection = (csrfToken) => {
         },
       }
     );
+    // FIXME: knows too much about how e is shaped
     e.target.parentNode.parentNode.removeChild(e.target.parentNode);
   }
 }
