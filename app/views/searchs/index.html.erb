@@ -1,0 +1,14 @@
+<div class="container search">
+  <% # TODO: use form tag helper %>
+  <div class="row">
+    <div class="col s8 offset-s2">
+      <form action="/subjects">
+        <div class="input-field">
+          <input class="search-bar" type="text" name="search_term" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%= javascript_pack_tag 'application' %>
+<%= javascript_pack_tag 'searchs/index' %>
