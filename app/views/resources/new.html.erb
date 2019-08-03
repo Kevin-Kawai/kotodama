@@ -1,11 +1,14 @@
 <div class="container">
-  <%= form_for(@subject, url: { action: "create" }) do |f| %>
+  <%= form_for(@resource, url: { action: "create" }) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <%= f.label :url %>
     <%= f.text_field :url %>
     <%= f.label :language %>
     <%= f.text_field :language %>
-    <%= f.submit "Create Subject" %>
+    <% if @root_resource_id %>
+      <%= hidden_field_tag :root_resource_id, @root_resource_id %>
+    <% end %>
+    <%= f.submit "Create Resource" %>
   <% end %>
 </div>

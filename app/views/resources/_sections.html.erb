@@ -6,7 +6,7 @@
         <div class="section-item">
           <i class="material-icons section-icon__transformation">arrow_drop_down_circle</i>
           <div><%= section.title %></div>
-          <i class="material-icons section-icon__transformation section-delete-button" data-delete-url="<%= section_path(section) %>">clear</i>
+          <i class="material-icons section-icon__transformation section-delete-button" data-delete-url="<%= resource_section_path(resource_id: section.resource.id, id: section.id) %>">clear</i>
         </div>
       <% end %>
     <% end %>
@@ -17,6 +17,5 @@
     <label for="title">title</label>
     <input type="text" name="title"/>
   </div>
-  <button class="section-add-button" id="section-add-button">Add Section</button>
+  <button class="section-add-button" id="section-add-button"  data-resource-id="<%= @resource.id %>">Add Section</button>
 </div>
-

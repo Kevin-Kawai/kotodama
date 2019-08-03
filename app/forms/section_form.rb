@@ -1,4 +1,4 @@
-class SubjectForm
+class SectionForm
   include ActiveModel::Model
   attr_reader :name, :url, :language
 

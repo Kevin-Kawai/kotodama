@@ -28,13 +28,14 @@ const deleteSection = (csrfToken) => {
 
 const createSection = (csrfToken) => {
   return (e) => {
+    const resourceId = e.target.dataset["resourceId"];
     if(sectionInputField.inputFieldDisplayStatus() === false) {
       sectionInputField.displayInput();
     } else {
       e.preventDefault();
-      axios.post("/sections", {
+      axios.post(`/resources/${resourceId}/sections`, {
         sections: {
-          resource_id: 1,
+          resource_id: resourceId,
           url: sectionInputField.inputUrl(),
           title: sectionInputField.inputTitle(),
         }

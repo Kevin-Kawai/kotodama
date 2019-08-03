@@ -1,4 +1,11 @@
 class SectionsController < ApplicationController
+  def index
+    @sections = Section.where(Section.arel_table[:title].matches("%#{params[:search_term]}%")).eager_load(:resources)
+  end
+
+  def new
+    @section = SubjectForm.new(params[:search_term])
+  end
   def create
     section = Section.new(section_params)
     if section.save!
