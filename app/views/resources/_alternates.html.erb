@@ -1,0 +1,13 @@
+<div class="">
+  <h5 class="">Alternate versions available in</h5>
+  <div class="alt-lang-container">
+    <ul>
+      <% related_resources.each do |resource| %>
+        <li class="alt-lang-item"><%= link_to resource.language, resource_path(resource) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <%= link_to new_resource_path(root_resource_id: resource) do %>
+    <div class="alt-lang-add-button">Add</div>
+  <% end %>
+</div>

@@ -1,0 +1,13 @@
+<main class="search-result__main-content">
+  <% if @resources.empty? %>
+    <%= render "no_results" %>
+  <% else %>
+    <div class="container search-result-area">
+      <div>Search Result for <p class="search-term"><%= params[:search_term] %></p></div>
+      <% @resources.each do |resource| %>
+        <%= render "search_results", resource: resource %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= javascript_pack_tag 'resources/index' %>
+</main>

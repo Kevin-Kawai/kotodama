@@ -1,0 +1,15 @@
+<div class="container">
+  <h3 class="title"><%= @resource.name %></h3>
+</div>
+<div class="row">
+  <div class="col s3 offset-s1">
+    <%= render "snapshot_detail", resource: @resource %>
+  </div>
+  <div class="col s4">
+    <%= render "sections", sections: @sections %>
+  </div>
+  <div class="col s3">
+    <%= render "alternates", resource: @resource, related_resources: @related_resources %>
+  </div>
+</div>
+<%= javascript_pack_tag 'resources/show' %>
