@@ -7,8 +7,8 @@ const addButton = document.getElementById("section-add-button");
 const deleteButtons = document.getElementsByClassName("section-delete-button");
 const sectionInputField = new inputField("section-field-inputs");
 
-const createSectionHeader = (sectionTitle, sectionId, csrfToken) => {
-  const sectionHeaderTemplate = new sectionHeader(sectionTitle, sectionId, deleteSection(csrfToken));
+const createSectionHeader = (resourceId, sectionTitle, sectionId, csrfToken) => {
+  const sectionHeaderTemplate = new sectionHeader(resourceId, sectionTitle, sectionId, deleteSection(csrfToken));
   document.getElementById('section-container').appendChild(sectionHeaderTemplate.render());
 }
 
@@ -44,7 +44,7 @@ const createSection = (csrfToken) => {
           'X-CSRF-TOKEN': csrfToken
         }
       }).then((response) => {
-        createSectionHeader(response.data["section_title"], response.data["section_id"], csrfToken)
+        createSectionHeader(resourceId, response.data["section_title"], response.data["section_id"], csrfToken)
       }).catch((error) => {
         console.log(error);
       })
