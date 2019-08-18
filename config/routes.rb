@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   resources :subjects, only: [:create]
   resources :resources, only: [:index, :show, :new, :create] do
-    resources :sections, only: [:create, :destroy]
+    resources :sections, only: [:create, :destroy, :edit]
   end
 end
