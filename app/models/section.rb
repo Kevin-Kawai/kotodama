@@ -1,4 +1,4 @@
 class Section < ApplicationRecord
   belongs_to :resource
-  has_rich_text :content
+  has_many :translations
 end

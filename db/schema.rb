@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_18_083435) do
+ActiveRecord::Schema.define(version: 2019_08_20_143127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,10 @@ ActiveRecord::Schema.define(version: 2019_08_18_083435) do
     t.string "url"
     t.string "title"
     t.index ["resource_id"], name: "index_sections_on_resource_id"
+  end
+
+  create_table "translations", force: :cascade do |t|
+    t.integer "section_id", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
