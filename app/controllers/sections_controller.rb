@@ -3,6 +3,10 @@ class SectionsController < ApplicationController
     @sections = Section.where(Section.arel_table[:title].matches("%#{params[:search_term]}%")).eager_load(:resources)
   end
 
+  def show
+    @section = Section.find(params[:id])
+  end
+
   def create
     section = Section.new(section_params)
     if section.save!
@@ -12,10 +16,6 @@ class SectionsController < ApplicationController
         section_id: section.id,
       }
     end
-  end
-
-  def edit
-    @section = Section.find(params[:id])
   end
 
   def destroy
