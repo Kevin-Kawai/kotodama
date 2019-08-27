@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   resources :resources, only: [:index, :show, :new, :create] do
     resources :sections, only: [:create, :destroy]
   end
+
+  resources :sections, only: [:show] do
+    resources :translations, only: [:new, :create, :show, :edit, :update]
+  end
 end
