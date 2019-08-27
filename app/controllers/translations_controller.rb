@@ -5,7 +5,9 @@ class TranslationsController < ApplicationController
   end
 
   def create
-    redirect_to action: :show
+    section = Section.find(params[:section_id])
+    translation = section.translations.create!(translation_params)
+    redirect_to section_translation_path(section_id: section.id, id: translation.id)
   end
 
   def show
@@ -13,13 +15,19 @@ class TranslationsController < ApplicationController
   end
 
   def edit
-    # @translation = Translation.find(params[:id])
-    # TODO: when implementing use above
-    @section = Section.find(params[:section_id])
-    @translation = Translation.new
+    @translation = Translation.find(params[:id])
+    @section = @translation.section
   end
 
   def update
-    redirect_to action: :show
+    translation = Translation.find(params[:id])
+    translation.update!(translation_params)
+    redirect_to section_translation_path(section_id: translation.section.id, id: translation.id)
+  end
+
+  private
+
+  def translation_params
+    params.require(:translation).permit(:content)
   end
 end

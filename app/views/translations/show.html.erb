@@ -1,4 +1,5 @@
 <div>
-  <%#= @translation.content %>
-  Translation Translation Translation Translation Translation Translation Translation
+  <%= @translation.content %>
 </div>
+
+<%= link_to "Edit", edit_section_translation_path(section_id: @translation.section.id, id: @translation.id) %>
