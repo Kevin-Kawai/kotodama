@@ -21,6 +21,7 @@ class SectionsController < ApplicationController
 
   def destroy
     section = Section.find(params[:id])
+    section.translations.destroy_all
     section.destroy!
   end
 
