@@ -29,6 +29,7 @@ related_resources.each do |related_resource|
   ResourceRelation.create!(resource_id: related_resource.id, resource_relation_id: created_resource.id)
 end
 
+# TODO: need to use real URL
 resource.sections.create(url: "www.test.com/section/1", title: "Intro")
 resource.sections.create(url: "www.test.com/section/2", title: "Next")
 resource.sections.create(url: "www.test.com/section/3", title: "Awesome")

@@ -5,8 +5,17 @@
       <% sections.each do |section| %>
         <div class="section-item">
           <i class="material-icons section-icon__transformation">arrow_drop_down_circle</i>
-          <div><%= section.title %></div>
+          <div><%= link_to section.title, section.url %></div>
           <i class="material-icons section-icon__transformation section-delete-button" data-delete-url="<%= resource_section_path(resource_id: section.resource.id, id: section.id) %>">clear</i>
+          <% if section.translations.exists? %>
+            <%= link_to section_translation_path(section_id: section.id, id: section.translations.first.id) do %>
+              <i class="material-icons">book</i>
+            <% end %>
+          <% else %>
+            <%= link_to new_section_translation_path(section_id: section.id) do %>
+              <i class="material-icons">bookmark</i>
+            <% end %>
+          <% end %>
         </div>
       <% end %>
     <% end %>

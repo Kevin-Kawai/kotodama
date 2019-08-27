@@ -13,6 +13,7 @@ class SectionsController < ApplicationController
       render json: {
         status: "Success",
         section_title: section.title,
+        section_url: section.url,
         section_id: section.id,
       }
     end

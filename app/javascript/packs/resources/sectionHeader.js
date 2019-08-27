@@ -1,6 +1,7 @@
 class sectionHeader {
-  constructor(resourceId, title, id, deleteCallback) {
+  constructor(resourceId, title, url, id, deleteCallback) {
     this.resourceId = resourceId;
+    this.url = url;
     this.title = title;
     this.id = id;
     this.callback = deleteCallback;
@@ -13,8 +14,11 @@ class sectionHeader {
     newSectionElement.innerHTML = `
     <div class="section-item">
       <i class="material-icons section-icon__transformation">arrow_drop_down_circle</i>
-      <div>${this.title}</div>
+      <div><a href="${this.url}">${this.title}</a></div>
       <i class="material-icons section-icon__transformation section-delete-button" data-delete-url="/resources/${this.resourceId}/sections/${this.id}">clear</i>
+      <a href="/sections/${this.id}/translations/new">
+        <i class="material-icons">bookmark</i>
+      </a>
     </div>`
     return newSectionElement;
   }

@@ -3,3 +3,5 @@
 </div>
 
 <%= link_to "Edit", edit_section_translation_path(section_id: @translation.section.id, id: @translation.id) %>
+<br />
+<%= link_to "Back to Section", resource_path(@translation.section.resource) %>
