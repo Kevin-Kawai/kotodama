@@ -2,11 +2,15 @@
   <% # TODO: use form tag helper %>
   <div class="row">
     <div class="col s8 offset-s2">
-      <form action="/resources">
+      <form id="search_action">
         <div class="input-field">
           <input class="search-bar" type="text" name="search_term" />
         </div>
       </form>
+      <select id="select_box">
+        <option value="articles" id="select_article">Article</option>
+        <option value="resources" id="select_documentation">Documentation</option>
+      </select>
     </div>
   </div>
 </div>

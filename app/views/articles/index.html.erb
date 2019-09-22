@@ -1,0 +1,9 @@
+<% if @articles.empty? %>
+  <div>No Articles Found...</div>
+  <%= link_to "Add Article", new_article_path %>
+<% else %>
+  <% @articles.each do |article| %>
+    <%= render "search_results", article: @article %>
+  <% end %>
+<% end %>
+<%= javascript_pack_tag 'articles/index' %>

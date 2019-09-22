@@ -4,16 +4,16 @@ class ResourcesController < ApplicationController
     @resources = Resource.where(Resource.arel_table[:name].matches("%#{params[:search_term]}%"))
   end
 
-  def new
-    # TODO: make this a post action so that the root cannot be changed
-    @root_resource_id = params[:root_resource_id]
-    @resource = Resource.new
-  end
-
   def show
     @resource = Resource.find(params[:id])
     @sections = @resource.sections
     @related_resources = @resource.related_resources
+  end
+
+  def new
+    # TODO: make this a post action so that the root cannot be changed
+    @root_resource_id = params[:root_resource_id]
+    @resource = Resource.new
   end
 
   def create

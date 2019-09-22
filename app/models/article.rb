@@ -1,3 +1,3 @@
 class Article < ApplicationRecord
-  has_one :translations, as: :translatable
+  has_one :translation, as: :translatable
 end
