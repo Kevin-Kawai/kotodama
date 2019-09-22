@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_143127) do
+ActiveRecord::Schema.define(version: 2019_09_22_121308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 2019_08_20_143127) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "articles", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.string "language"
+  end
+
   create_table "resource_relations", force: :cascade do |t|
     t.integer "resource_id"
     t.integer "resource_relation_id"
@@ -67,6 +73,8 @@ ActiveRecord::Schema.define(version: 2019_08_20_143127) do
 
   create_table "translations", force: :cascade do |t|
     t.integer "section_id", null: false
+    t.integer "translatable_id"
+    t.string "translatable_type"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
