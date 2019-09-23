@@ -6,6 +6,9 @@
     <%= f.text_field :url %>
     <%= f.label :language %>
     <%= f.text_field :language %>
+    <% if @root_article_id %>
+      <%= hidden_field_tag :root_article_id, @root_article_id %>
+    <% end %>
     <%= f.submit "Add Article" %>
   <% end %>
 </div>

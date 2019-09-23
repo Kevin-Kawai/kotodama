@@ -1,0 +1,9 @@
+<h5>Alternate Versions</h5>
+<% unless related_articles.nil? %>
+  <% related_articles.each do |article| %>
+    <%= link_to article.language, article_path(article) %>
+    <br />
+  <% end %>
+<% end %>
+
+<%= link_to "Add", new_article_path(root_article_id: article) %>
