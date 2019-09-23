@@ -5,18 +5,31 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @related_articles = @article.related_articles
   end
 
   def new
     @article = Article.new
+    @root_article_id = params[:root_article_id]
   end
 
   def create
-    article = Article.new(article_params)
-    if article.save!
-      redirect_to article_path(article)
+    if params[:root_article_id].present?
+      article = Article.find(params[:root_article_id])
+      related_articles = article.related_articles
+      # TODO: this whole thing is blagh
+      created_article = article.similar_articles.create!(article_params)
+      related_articles.each do |related_article|
+        ArticleRelation.create!(article_id: related_article.id, article_relation_id: created_article.id)
+      end
+      redirect_to article_path(created_article)
     else
-      render 500
+      article = Article.new(article_params)
+      if article.save!
+        redirect_to article_path(article)
+      else
+        render status: 500
+      end
     end
   end
 

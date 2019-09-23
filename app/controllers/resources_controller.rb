@@ -43,6 +43,7 @@ class ResourcesController < ApplicationController
     params.require(:resource).permit(:url, :language, :name)
   end
 
+  # TODO: might be used??
   def similar_resource_params
     params.require(:resource).permit(:url, :language, :name).merge(resource_relation_id: params[:root_resource_id])
   end
