@@ -10,11 +10,13 @@
 
 <br />
 
-<h1>Translation</h1>
+<% unless @translation.nil? %>
+  <h1>Translation</h1>
 
-<div>
-  <%= @translation.content %>
-</div>
+  <div>
+    <%= @translation.content %>
+  </div>
+<% end %>
 
 <br />
 <% unless @translation %>
