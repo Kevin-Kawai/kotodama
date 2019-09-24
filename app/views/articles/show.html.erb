@@ -7,3 +7,18 @@
 <br />
 
 <%= render "alternates", article: @article, related_articles: @related_articles %>
+
+<br />
+
+<h1>Translation</h1>
+
+<div>
+  <%= @translation.content %>
+</div>
+
+<br />
+<% unless @translation %>
+  <%= link_to "Add Translations", new_article_translation_path(@article) %>
+<% else %>
+  <%= link_to "Edit Translations", edit_article_translation_path(@article) %>
+<% end %>

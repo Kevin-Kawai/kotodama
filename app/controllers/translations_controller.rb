@@ -16,13 +16,13 @@ class TranslationsController < ApplicationController
 
   def edit
     @translation = Translation.find(params[:id])
-    @section = @translation.section
+    @section = @translation.translatable
   end
 
   def update
     translation = Translation.find(params[:id])
     translation.update!(translation_params)
-    redirect_to section_translation_path(section_id: translation.section.id, id: translation.id)
+    redirect_to section_translation_path(section_id: translation.translatable.id, id: translation.id)
   end
 
   private

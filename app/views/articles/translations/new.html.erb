@@ -1,0 +1,9 @@
+<%= stylesheet_link_tag 'actiontext' %>
+<%= javascript_pack_tag 'translations/new' %>
+<h1><%= @article.name %></h1>
+<%= form_for @translation, url: article_translations_path do |f| %>
+  <div class="field">
+    <%= f.rich_text_area :content %>
+  </div>
+  <%= f.submit %>
+<% end %>
