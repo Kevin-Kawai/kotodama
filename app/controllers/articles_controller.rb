@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @related_articles = @article.related_articles
+    @translation = @article.translation
   end
 
   def new

@@ -1,0 +1,10 @@
+<%= stylesheet_link_tag 'actiontext' %>
+<%= javascript_pack_tag 'translations/new' %>
+<%# TODO: use the real ID when implementing the edit and update actions %>
+<%# are you just not suppose to nest update routes??? %>
+<%= form_for @translation, method: :PUT, url: article_translations_path(article_id: @article.id) + "/#{@translation.id}" do |f| %>
+  <div class="field">
+    <%= f.rich_text_area :content %>
+  </div>
+  <%= f.submit %>
+<% end %>
