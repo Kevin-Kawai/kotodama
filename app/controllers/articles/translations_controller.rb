@@ -13,8 +13,8 @@ class Articles::TranslationsController < ApplicationController
   end
 
   def edit
-    @translation = Translation.find(params[:id])
-    @article = @translation.translatable
+    @article = Article.find(params[:id])
+    @translation = @article.translation
   end
 
   def update
